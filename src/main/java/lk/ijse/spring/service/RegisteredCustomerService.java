@@ -8,6 +8,6 @@ public interface RegisteredCustomerService {
     void saveRegisteredCustomer(RegisteredCustomerDTO dto);
     void deleteRegisteredCustomer(String id);
     void updateRegisteredCustomer(RegisteredCustomerDTO dto);
-    RegisteredCustomerDTO searchRegisteredCustomer(RegisteredCustomerDTO dto);
+    RegisteredCustomerDTO searchRegisteredCustomer(String id);
     List<RegisteredCustomerDTO> getAllRegisteredCustomer();
 }
