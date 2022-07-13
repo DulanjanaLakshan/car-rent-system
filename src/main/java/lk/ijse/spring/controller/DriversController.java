@@ -1,6 +1,7 @@
 package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.DriverDTO;
+import lk.ijse.spring.dto.EmployeeDTO;
 import lk.ijse.spring.service.DriverService;
 import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,31 +17,31 @@ public class DriversController {
     DriverService driverService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getAllDrivers(){
-        return new ResponseUtil(200,"Ok",driverService.getAllDrivers());
+    public ResponseUtil getAllDrivers() {
+        return new ResponseUtil(200, "Ok", driverService.getAllDrivers());
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveDrivers(@ModelAttribute DriverDTO driverDTO){
+    public ResponseUtil saveDrivers(@ModelAttribute DriverDTO driverDTO) {
         driverService.saveDrivers(driverDTO);
-        return new ResponseUtil(200,"Save",null);
+        return new ResponseUtil(200, "Save", null);
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateDrivers(@RequestBody DriverDTO driverDTO){
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateEmployee(@RequestBody DriverDTO driverDTO) {
         driverService.updateDrivers(driverDTO);
-        return new ResponseUtil(200,"Deleted",null);
+        return new ResponseUtil(200, "Updated", null);
     }
 
-    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteDrivers(@RequestParam String id){
+    @DeleteMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteDrivers(@RequestParam String id) {
         driverService.deleteDrivers(id);
-        return new ResponseUtil(200,"Deleted",null);
+        return new ResponseUtil(200, "Deleted", null);
     }
 
-    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchDrivers(@PathVariable String id){
-        return new ResponseUtil(200,"Ok",driverService.searchDrivers(id));
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchDrivers(@PathVariable String id) {
+        return new ResponseUtil(200, "Ok", driverService.searchDrivers(id));
     }
 }
