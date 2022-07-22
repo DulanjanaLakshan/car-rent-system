@@ -111,6 +111,15 @@ li {
 }
 #form_sec{
     width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#form_sec>div{
+    width: 80%;
+    height: 90vh;
+    border: 1px solid;
 }
 #content_sec{
     width: 80%;
