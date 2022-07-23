@@ -5,6 +5,10 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 #main_bg {
   width: 100vw;
   height: 100vh;
