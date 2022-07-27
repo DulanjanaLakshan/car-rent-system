@@ -10,61 +10,65 @@
 <body>
 <div class="container">
     <div class="titel">Customer Sing Up</div>
-    <form action="#" id="RCustomer">
+    <form id="RCustomer">
         <div class="user-details">
             <div class="input-box">
                 <samp class="details">ID</samp>
-                <input name="" placeholder="Enter ID" required type="text">
+                <input name="rcId" placeholder="Enter ID" required type="text">
             </div>
             <div class="input-box">
                 <samp class="details">Full name</samp>
-                <input name="" placeholder="Enter Your Full Name" required type="text">
+                <input name="name" placeholder="Enter Your Full Name" required type="text">
             </div>
             <div class="input-box">
                 <samp class="details">Email</samp>
-                <input name="" placeholder="Enter Your Email" required type="email">
+                <input name="email" placeholder="Enter Your Email" required type="email">
             </div>
             <div class="input-box">
                 <samp class="details">Contact</samp>
-                <input name="" placeholder="Enter Your Contact" required type="text">
+                <input name="contact" placeholder="Enter Your Contact" required type="text">
             </div>
             <div class="input-box">
                 <samp class="details">NIC</samp>
-                <input name="" placeholder="Enter Your NIC No" required type="text">
+                <input name="nic" placeholder="Enter Your NIC No" required type="text">
             </div>
             <div class="input-box">
                 <samp class="details">User name</samp>
-                <input name="" placeholder="Enter User Name" required type="text">
+                <input name="username" placeholder="Enter User Name" required type="text">
             </div>
             <div class="input-box">
                 <samp class="details">Password</samp>
-                <input name="" placeholder="Enter Your Pass" required type="password">
+                <input name="password" placeholder="Enter Your Pass" required type="password">
             </div>
         </div>
-        <div class="button">
-            <input type="submit" value="Registor">
+        <div class="button" id="#SaveCustomer">
+            <button id="SaveCustomer" type="button">Submit</button>
         </div>
     </form>
 </div>
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <script>
+    var baseUrl = "registered/customer";
 
-    var baseUrl = "http://localhost:8080/car_rent_system_war/registered/customer";
-    var data = $("#RCustomer").serialize();
-    $.ajax({
-        url: baseUrl,
-        method: "PUT",
-        contentType: "application/json", //You should state request's content type using MIME types
-        data: data, // format js object to valid json string
-        success: function (res) {
-            if (res.code == 200) { // process is  ok
-                alert("Successfully Updated");
+    $("#SaveCustomer").click(function () {
+        console.log("ok")
+        var data = $("#RCustomer").serialize();
+        $.ajax({
+            url: baseUrl,
+            method: "POST",
+            data: data,
+            success: function (res) {
+                if (res.code == 200) {
+                    alert("Successfully Updated");
+                }
+            },
+            error: function (ob) {
+                alert(ob.responseJSON.message);
             }
-        },
-        error: function (ob) {
-            alert(ob.responseJSON.message);
-        }
+        });
     });
+
+
 </script>
 </body>
 </html>

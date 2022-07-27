@@ -90,7 +90,7 @@ form .button {
   height: 45px;
   margin: 10px 0 15px 0;
 }
-form .button input {
+form .button button {
   height: 100%;
   width: 100%;
   outline: none;
@@ -102,6 +102,6 @@ form .button input {
   letter-spacing: 1px;
   background: linear-gradient(195deg, #71b7e6, #9b59b6);
 }
-form .button input:hover {
+form .button button:hover {
   background: linear-gradient(-195deg, #71b7e6, #9b59b6);
 }
