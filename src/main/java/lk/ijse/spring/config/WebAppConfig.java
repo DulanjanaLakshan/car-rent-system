@@ -23,7 +23,7 @@ public class WebAppConfig  implements WebMvcConfigurer {
     public ViewResolver viewResolver(){
         InternalResourceViewResolver v= new InternalResourceViewResolver();
         v.setPrefix("/");
-        v.setSuffix(".html");
+        v.setSuffix(".html");// /index.html
         v.setOrder(2);
         return v;
     }
