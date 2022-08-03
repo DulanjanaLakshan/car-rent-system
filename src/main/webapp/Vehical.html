@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>admin</title>
+    <link href="assets/css/Dashobord.css" rel="stylesheet"/>
+    <link
+            crossorigin="anonymous"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            referrerpolicy="no-referrer"
+            rel="stylesheet"
+    />
+    <link href="assets/bootstarp/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<main>
+    <section id="menu">
+        <div style="margin-top: 50px">
+            <i class="fa-solid fa-house" id="home"></i>
+        </div>
+        <div>
+            <i class="fa-brands fa-intercom"></i>
+        </div>
+        <div>
+            <i class="fa-solid fa-car" id="vehical"></i>
+        </div>
+        <div>
+            <i class="fa-solid fa-car-burst"></i>
+        </div>
+        <div>
+            <i class="fa-solid fa-person-military-pointing" id="customer"></i>
+        </div>
+    </section>
+    <section id="content">
+        <section class="container-fluid mt-3" id="Vehical_Section">
+            <section class="row mt-3 justify-content-around">
+                <div class="col-12 col-md-4">
+                    <div class="shadow-sm pt-3 pb-5 px-3 py-3 mt-2">
+                        <h1 class="h1 mb-3">Vehical Manage</h1>
+                        <div class="mb-3">
+                            <label class="form-label" for="srcCusID"
+                            >Search RegisteredVehical</label
+                            >
+                            <input
+                                    class="form-control"
+                                    id="srcCusID"
+                                    placeholder="Vehical ID"
+                                    type="text"
+                            />
+                        </div>
+                        <button class="btn btn-secondary" id="btnVehicalSearch">
+                            Search
+                        </button>
+                        <button class="btn btn-primary" id="btnSaveVehicle">
+                            Save
+                        </button>
+                        <button class="btn btn-success" id="btnUpdateVehical">
+                            Update
+                        </button>
+                        <button class="btn btn-danger" id="btnDeleteVehical">
+                            Delete
+                        </button>
+                        <button class="btn" id="btnGetAllVehical">
+                            Get All Vehical
+                        </button>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5">
+                    <form id="VehicleForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="txtVehicalId">Vehical ID</label>
+                            <input
+                                    class="form-control"
+                                    id="txtVehicalId"
+                                    name="vId"
+                                    placeholder="Vehical ID"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="txtvName">Vehical Name</label
+                            >
+                            <input
+                                    class="form-control"
+                                    id="txtvName"
+                                    name="vName"
+                                    placeholder="Vehical Name"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="txtSize"
+                            >Vehical Size</label
+                            >
+                            <input
+                                    class="form-control"
+                                    id="txtSize"
+                                    name="vSize"
+                                    placeholder="Vehical Size"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="txtFuelType">Vehical Fuel Type</label>
+                            <input
+                                    class="form-control"
+                                    id="txtFuelType"
+                                    name="fuelType"
+                                    placeholder="Vehical FuelType"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="txtownName">Vehical own Name</label>
+                            <input
+                                    class="form-control"
+                                    id="txtownName"
+                                    name="ownName"
+                                    placeholder="Vehical ownName"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="txtDescription"
+                            >Vehical Description</label
+                            >
+                            <input
+                                    class="form-control"
+                                    id="txtDescription"
+                                    name="Description"
+                                    placeholder="Vehical Description"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="txtLicence"
+                            >Vehical Licence</label
+                            >
+                            <input
+                                    class="form-control"
+                                    id="txtLicence"
+                                    name="Licence"
+                                    placeholder="Customer licence"
+                                    type="text"
+                            />
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="row mt-4">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead class="bg-danger text-white">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>size</th>
+                            <th>fuelType</th>
+                            <th>ownName</th>
+                            <th>description</th>
+                            <th>licence</th>
+                        </tr>
+                        </thead>
+                        <tbody id="VehicleTable"></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </section>
+</main>
+
+<script src="assets/bootstarp/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/location.js"></script>
+<script>
+
+    var baseUrl = "vehicle/registered";
+
+    $("#btnGetAllVehical").click(function () {
+        lasdAllVehicales();
+    });
+
+    $("#btnDeleteVehical").click(function () {
+        deleteVehicales();
+    });
+
+    $("#btnUpdateVehical").click(function () {
+        updateVehicle();
+    });
+
+    $("#btnSaveVehicle").click(function () {
+        saveVehicle();
+    });
+
+    $("#btnVehicalSearch").click(function () {
+
+    });
+    lasdAllVehicales()
+
+    function lasdAllVehicales() {
+        $("#VehicleTable").empty();
+        $.ajax({
+            url: baseUrl,
+            method: "GET",
+            success: function (resp) {
+                for (const vehical of resp.data) {
+                    let row = `<tr><td>${vehical.vId}</td><td>${vehical.vName}</td><td>${vehical.vSize}</td><td>${vehical.fuelType}</td><td>${vehical.ownName}</td><td>${vehical.description}</td><td>${vehical.licence}</td></tr>`;
+                    $("#VehicleTable").append(row);
+                }
+            }
+        });
+    }
+
+    function saveVehicle() {
+        var data=$("#VehicleForm").serialize()
+        $.ajax({
+            url: baseUrl,
+            method: "POST",
+            data:data,
+            success(resp){
+                if (resp.code == 200) {
+                    alert("Successfully Customer Registered");
+                    lasdAllVehicales();
+                }
+            },
+            error: function (ob) {
+                alert(ob.responseJSON.message);
+            }
+        });
+    }
+
+    function updateVehicle(){
+        var vOb={
+            vId:$("#txtVehicalId").val(),
+            vName:$("#txtvName").val(),
+            vSize:$("#txtSize").val(),
+            fuelType:$("#txtFuelType").val(),
+            ownName:$("#txtownName").val(),
+            description:$("#txtDescription").val(),
+            licence:$("#txtLicence").val()
+        }
+        $.ajax({
+            url:baseUrl,
+            method:"PUT",
+            contentType:"application/json",
+            data: JSON.stringify(vOb),
+            success:function (resp) {
+                if (resp.code == 200) { // process is  ok
+                    alert("Successfully Updated");
+                    lasdAllVehicales();
+                }
+            },
+            error: function (ob) {
+                alert(ob.responseJSON.message);
+            }
+        });
+    }
+
+    function deleteVehicales() {
+        let VehicalesID = $("#txtVehicalId").val();
+
+        $.ajax({
+            url: baseUrl + "?id=" + VehicalesID,
+            method: "DELETE",
+            success: function (res) {
+                if (res.code == 200) {
+                    alert("Vehicle Successfully Deleted");
+                    lasdAllVehicales();
+                }
+            },
+            error: function (ob) {
+                alert(ob.responseJSON.message);
+            }
+        });
+    }
+</script>
+</body>
+</html>

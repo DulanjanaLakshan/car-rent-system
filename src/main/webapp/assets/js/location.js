@@ -1,0 +1,9 @@
+$("#customer").click(function(){
+    window.location.href='RCustomer.html';
+})
+$("#vehical").click(function(){
+    window.location.href='Vehical.html';
+})
+$("#home").click(function(){
+    window.location.href='adminD.html';
+})

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin</title>
+    <link href="assets/css/Dashobord.css" rel="stylesheet" />
+    <link
+      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      referrerpolicy="no-referrer"
+      rel="stylesheet"
+    />
+    <link href="assets/bootstarp/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <section id="menu">
+        <div style="margin-top: 50px">
+          <i class="fa-solid fa-house" id="home"></i>
+        </div>
+        <div>
+          <i class="fa-brands fa-intercom"></i>
+        </div>
+        <div>
+          <i class="fa-solid fa-car" id="vehical"></i>
+        </div>
+        <div>
+          <i class="fa-solid fa-car-burst"></i>
+        </div>
+        <div>
+          <i class="fa-solid fa-person-military-pointing" id="customer"></i>
+        </div>
+      </section>
+      <section id="content">
+        <section class="container-fluid mt-3" id="Customer_Section">
+          <section class="row mt-3 justify-content-around">
+            <div class="col-12 col-md-4">
+              <div class="shadow-sm pt-3 pb-5 px-3 py-3 mt-2">
+                <h1 class="h1 mb-3">Customer Manage</h1>
+                <div class="mb-3">
+                  <label class="form-label" for="srcCusID"
+                    >Search RegisteredCustomer</label
+                  >
+                  <input
+                    class="form-control"
+                    id="srcCusID"
+                    placeholder="Customer ID"
+                    type="text"
+                  />
+                </div>
+                <button class="btn btn-secondary" id="btnCustomerSearch">
+                  Search
+                </button>
+                <button class="btn btn-primary" id="btnSaveCustomer">
+                  Save
+                </button>
+                <button class="btn btn-success" id="btnUpdateCustomer">
+                  Update
+                </button>
+                <button class="btn btn-danger" id="btnDeleteCustomer">
+                  Delete
+                </button>
+                <button class="btn" id="btnGetAllCustomer">
+                  Get All Customer
+                </button>
+              </div>
+            </div>
+            <div class="col-12 col-md-5">
+              <form id="customerForm">
+                <div class="mb-3">
+                  <label class="form-label" for="txtCusID">Customer ID</label>
+                  <input
+                    class="form-control"
+                    id="txtCusID"
+                    name="rcId"
+                    placeholder="Customer ID"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="txtCusName"
+                    >Customer Name</label
+                  >
+                  <input
+                    class="form-control"
+                    id="txtCusName"
+                    name="name"
+                    placeholder="Customer Name"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="txtCuscontact"
+                    >Customer contact</label
+                  >
+                  <input
+                    class="form-control"
+                    id="txtCuscontact"
+                    name="contact"
+                    placeholder="Customer contact"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="txtemail"
+                    >Customer email</label
+                  >
+                  <input
+                    class="form-control"
+                    id="txtemail"
+                    name="email"
+                    placeholder="Customer email"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="txtnic">Customer nic</label>
+                  <input
+                    class="form-control"
+                    id="txtnic"
+                    name="nic"
+                    placeholder="Customer nic"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="txtusername"
+                    >Customer username</label
+                  >
+                  <input
+                    class="form-control"
+                    id="txtusername"
+                    name="username"
+                    placeholder="Customer username"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="txtpassword"
+                    >Customer password</label
+                  >
+                  <input
+                    class="form-control"
+                    id="txtpassword"
+                    name="password"
+                    placeholder="Customer password"
+                    type="text"
+                  />
+                </div>
+              </form>
+            </div>
+          </section>
+          <section class="row mt-4">
+            <div class="col">
+              <table class="table table-hover">
+                <thead class="bg-danger text-white">
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>NIC</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                  </tr>
+                </thead>
+                <tbody id="customerTable"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="assets/bootstarp/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script>
+      var baseUrl = "registered/customer";
+
+      $("#btnGetAllCustomer").click(function () {
+        loadAllCustomer();
+      });
+
+      $("#btnSaveCustomer").click(function () {
+        saveCustomer();
+      });
+      $("#btnUpdateCustomer").click(function () {
+        updateCustomer();
+      });
+      $("#btnDeleteCustomer").click(function () {
+        deleteCustomer();
+      });
+
+      function saveCustomer() {
+        var data = $("#customerForm").serialize();
+        $.ajax({
+          url: baseUrl,
+          method: "POST",
+          data: data, // if we send data with the request
+          success: function (res) {
+            if (res.code == 200) {
+              alert("Successfully Customer Registered");
+              loadAllCustomer();
+            }
+          },
+          error: function (ob) {
+            alert(ob.responseJSON.message);
+          },
+        });
+      }
+
+      function updateCustomer() {
+        var cusOb = {
+          rcId: $("#txtCusID").val(),
+          name: $("#txtCusName").val(),
+          contact: $("#txtCuscontact").val(),
+          email: $("#txtemail").val(),
+          nic: $("#txtnic").val(),
+          username: $("#txtusername").val(),
+          password: $("#txtpassword").val(),
+        };
+
+        $.ajax({
+          url: baseUrl,
+          method: "PUT",
+          contentType: "application/json",
+          data: JSON.stringify(cusOb),
+          success: function (res) {
+            if (res.code == 200) {
+              alert("Successfully Updated");
+              loadAllCustomer();
+            }
+          },
+          error: function (ob) {
+            alert(ob.responseJSON.message);
+          },
+        });
+      }
+
+      function deleteCustomer() {
+        let customerID = $("#txtCusID").val();
+        $.ajax({
+          url: baseUrl + "?id=" + customerID,
+          method: "DELETE",
+          success: function (res) {
+            if (res.code == 200) {
+              alert("Customer Successfully Deleted");
+              loadAllCustomer();
+            }
+          },
+          error: function (ob) {
+            alert(ob.responseJSON.message);
+          },
+        });
+      }
+
+      function loadAllCustomer() {
+        $("#customerTable").empty();
+        $.ajax({
+          url: baseUrl,
+          method: "GET",
+          success: function (resp) {
+            for (const customer of resp) {
+              let row = `<tr><td>${customer.rcId}</td><td>${customer.name}</td><td>${customer.contact}</td><td>${customer.email}</td><td>${customer.nic}</td><td>${customer.username}</td><td>${customer.password}</td></tr>`;
+              $("#customerTable").append(row);
+            }
+          },
+          error: function (ob) {
+            alert("Error");
+          },
+        });
+      }
+    </script>
+    <script src="assets/js/location.js"></script>
+  </body>
+</html>
